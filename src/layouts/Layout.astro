@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+
+const { title, description = 'Ideas y recomendaciones para crear rincones cálidos en casa.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} · The Cozy Nest</title>
+  <meta name="description" content={description} />
+</head>
+<body class="font-sans">
+  <header class="border-b border-borderc py-6">
+    <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
+      <a href="/" class="font-serif text-2xl font-medium text-burgundy">
+        The Cozy<span class="text-mustard-dark">Nest</span>
+      </a>
+      <nav class="flex gap-7 text-sm font-medium text-ink-soft">
+        <a href="/oficina-cozy" class="hover:text-terracotta">Oficina cozy</a>
+        <a href="/rincon-lectura" class="hover:text-terracotta">Rincón de lectura</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="border-t border-borderc py-9 mt-16">
+    <div class="max-w-xl mx-auto px-8 text-center">
+      <p class="text-xs text-ink-soft">
+        Como afiliado de Amazon, realizo compras adscritas que cumplen los requisitos aplicables.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
