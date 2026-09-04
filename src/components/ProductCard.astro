@@ -1,0 +1,36 @@
+---
+import AmazonButton from './AmazonButton.astro';
+
+const { producto } = Astro.props;
+const { nombre, precio, destacado, pros = [], contras = [], enlace } = producto;
+---
+<div class="border border-borderc rounded p-7 mb-8 bg-white">
+  {destacado && (
+    <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-3">
+      {destacado}
+    </span>
+  )}
+  <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-1">{nombre}</h3>
+  {precio && <p class="text-ink-soft text-sm mb-4">{precio}</p>}
+
+  <div class="grid sm:grid-cols-2 gap-6 mb-5">
+    {pros.length > 0 && (
+      <div>
+        <p class="font-medium text-sm text-burgundy-dark mb-2">Pros</p>
+        <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
+          {pros.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+    )}
+    {contras.length > 0 && (
+      <div>
+        <p class="font-medium text-sm text-burgundy-dark mb-2">Contras</p>
+        <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
+          {contras.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    )}
+  </div>
+
+  <AmazonButton href={enlace}>Ver precio en Amazon</AmazonButton>
+</div>

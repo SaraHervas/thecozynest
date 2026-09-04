@@ -1,0 +1,13 @@
+---
+import { withAffiliateTag } from '../lib/affiliate';
+
+const { href, class: className = '' } = Astro.props;
+---
+<a
+  href={withAffiliateTag(href)}
+  target="_blank"
+  rel="nofollow noopener noreferrer"
+  class={`inline-block bg-mustard hover:bg-mustard-dark transition-colors text-cream font-semibold px-6 py-2.5 rounded-sm text-sm text-center ${className}`}
+>
+  <slot />
+</a>

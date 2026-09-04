@@ -1,0 +1,13 @@
+---
+const { badge, title, description, href } = Astro.props;
+---
+<a href={href} class="block bg-white border border-borderc rounded p-8 hover:border-terracotta transition-colors">
+  {badge && (
+    <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-4">
+      {badge}
+    </span>
+  )}
+  <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-2">{title}</h3>
+  <p class="text-ink-soft text-sm mb-4">{description}</p>
+  <span class="text-terracotta font-semibold text-sm">Leer guía →</span>
+</a>

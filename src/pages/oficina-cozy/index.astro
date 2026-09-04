@@ -1,13 +1,26 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const modules = import.meta.glob('./*.astro', { eager: true });
+const articulos = Object.values(modules)
+  .filter((m) => m.meta)
+  .map((m) => m.meta);
 ---
 <Layout title="Oficina cozy" description="Ideas para un home office cálido y funcional.">
   <section class="max-w-3xl mx-auto px-8 py-16">
     <h1 class="font-serif text-4xl text-burgundy-dark font-medium mb-4">Oficina cozy</h1>
-    <p class="text-ink-soft mb-8">
-      Aquí irán los artículos y reseñas de productos para crear un espacio de
-      teletrabajo cálido: lámparas, sillas, organizadores y mantas.
+    <p class="text-ink-soft mb-10">
+      Lámparas, sillas, organizadores y mantas para convertir tu escritorio en el
+      rincón favorito de teletrabajo, sin dejar de ser funcional.
     </p>
-    <p class="text-sm text-ink-soft italic">Contenido pendiente de añadir.</p>
+
+    {articulos.length > 0 ? (
+      <div class="grid sm:grid-cols-2 gap-6">
+        {articulos.map((a) => <ArticleCard {...a} />)}
+      </div>
+    ) : (
+      <p class="text-sm text-ink-soft italic">Contenido pendiente de añadir.</p>
+    )}
   </section>
 </Layout>

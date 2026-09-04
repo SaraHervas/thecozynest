@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
 ---
 <Layout title="Inicio">
   <section class="max-w-5xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-14 items-center">
@@ -12,9 +13,7 @@ import Layout from '../layouts/Layout.astro';
         Ideas y recomendaciones para convertir tu escritorio y tu sillón de lectura
         en el lugar favorito de tu piso, aunque sea pequeño.
       </p>
-      <a href="/oficina-cozy" class="inline-block bg-mustard text-cream font-semibold px-7 py-3 rounded-sm">
-        Ver guía de oficina cozy
-      </a>
+      <Button href="/oficina-cozy">Ver guía de oficina cozy</Button>
     </div>
     <div class="bg-cream-2 border border-borderc rounded aspect-[4/3.4] flex items-center justify-center">
       <span class="text-ink-soft text-sm">Espacio para imagen o ilustración</span>
@@ -27,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
       Contenido pensado para pisos reales, presupuestos reales y teletrabajo real.
     </p>
     <div class="grid md:grid-cols-2 gap-7">
-      <a href="/oficina-cozy" class="block bg-white border border-borderc rounded p-8">
+      <a href="/oficina-cozy" class="block bg-white border border-borderc rounded p-8 hover:border-terracotta transition-colors">
         <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-4">Pilar 1</span>
         <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-2">Oficina cozy</h3>
         <p class="text-ink-soft text-sm mb-4">
@@ -35,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
         </p>
         <span class="text-terracotta font-semibold text-sm">Explorar oficina cozy →</span>
       </a>
-      <a href="/rincon-lectura" class="block bg-white border border-borderc rounded p-8">
+      <a href="/rincon-lectura" class="block bg-white border border-borderc rounded p-8 hover:border-terracotta transition-colors">
         <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-4">Pilar 2</span>
         <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-2">Rincón de lectura</h3>
         <p class="text-ink-soft text-sm mb-4">

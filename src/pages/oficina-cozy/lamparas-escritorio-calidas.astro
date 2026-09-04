@@ -1,5 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+
+export const meta = {
+  badge: 'Guía de compra',
+  title: 'Las mejores lámparas cálidas para tu escritorio',
+  description:
+    'Guía de lámparas de escritorio con luz cálida para crear un home office cozy, incluso en espacios pequeños.',
+  href: '/oficina-cozy/lamparas-escritorio-calidas'
+};
 
 const lamparas = [
   {
@@ -8,7 +18,7 @@ const lamparas = [
     destacado: 'La más compacta',
     pros: ['Ocupa poco espacio en escritorios pequeños', '3 tonos de luz y 10 niveles de brillo', 'Puerto USB para cargar el móvil'],
     contras: ['El brazo es algo corto para mesas muy grandes', 'El brillo máximo se queda justo para tareas de mucho detalle'],
-    enlace: 'https://amazon.es/dp/EJEMPLO1?tag=TU-TAG-21'
+    enlace: 'https://amazon.es/dp/EJEMPLO1'
   },
   {
     nombre: 'TaoTronics de brazo articulado, temperatura ajustable',
@@ -16,7 +26,7 @@ const lamparas = [
     destacado: 'La más versátil',
     pros: ['Brazo articulado, cubre escritorios grandes sin moverla', 'Buen CRI, los colores se ven fieles bajo su luz', 'Memoria de la última configuración usada'],
     contras: ['Más grande, necesita algo de espacio en la mesa', 'El control táctil tarda un poco en acostumbrarse'],
-    enlace: 'https://amazon.es/dp/EJEMPLO2?tag=TU-TAG-21'
+    enlace: 'https://amazon.es/dp/EJEMPLO2'
   },
   {
     nombre: 'Lámpara de pie con pantalla de lino, luz cálida',
@@ -24,18 +34,15 @@ const lamparas = [
     destacado: 'La más "cozy"',
     pros: ['Aporta luz ambiental además de la de trabajo', 'Estética muy cálida, encaja perfecto en rincones de lectura', 'No ocupa espacio en la mesa'],
     contras: ['No sirve como única luz de trabajo de precisión', 'Necesita algo de espacio en el suelo junto al escritorio'],
-    enlace: 'https://amazon.es/dp/EJEMPLO3?tag=TU-TAG-21'
+    enlace: 'https://amazon.es/dp/EJEMPLO3'
   }
 ];
 ---
-<Layout
-  title="Las mejores lámparas cálidas para tu escritorio"
-  description="Guía de lámparas de escritorio con luz cálida para crear un home office cozy, incluso en espacios pequeños."
->
+<Layout title={meta.title} description={meta.description}>
   <article class="max-w-3xl mx-auto px-8 py-16">
     <p class="text-sage text-sm font-medium mb-3">Oficina cozy</p>
     <h1 class="font-serif text-4xl text-burgundy-dark font-medium mb-6 leading-tight">
-      Las mejores lámparas cálidas para tu escritorio
+      {meta.title}
     </h1>
 
     <p class="text-ink-soft mb-6">
@@ -59,60 +66,9 @@ const lamparas = [
     <h2 class="font-serif text-2xl text-burgundy-dark font-medium mt-10 mb-6">
       Comparativa rápida
     </h2>
-    <div class="overflow-x-auto mb-12">
-      <table class="w-full text-sm border border-borderc rounded overflow-hidden">
-        <thead>
-          <tr class="bg-cream-2 text-left">
-            <th class="p-3 font-medium text-burgundy-dark">Modelo</th>
-            <th class="p-3 font-medium text-burgundy-dark">Ideal para</th>
-            <th class="p-3 font-medium text-burgundy-dark">Precio orientativo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {lamparas.map((l) => (
-            <tr class="border-t border-borderc">
-              <td class="p-3">{l.nombre}</td>
-              <td class="p-3 text-ink-soft">{l.destacado}</td>
-              <td class="p-3 text-ink-soft">{l.precio}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <ComparisonTable productos={lamparas} />
 
-    {lamparas.map((l) => (
-      <div class="border border-borderc rounded p-7 mb-8 bg-white">
-        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-3">
-          {l.destacado}
-        </span>
-        <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-1">{l.nombre}</h3>
-        <p class="text-ink-soft text-sm mb-4">{l.precio}</p>
-
-        <div class="grid sm:grid-cols-2 gap-6 mb-5">
-          <div>
-            <p class="font-medium text-sm text-burgundy-dark mb-2">Pros</p>
-            <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
-              {l.pros.map((p) => <li>{p}</li>)}
-            </ul>
-          </div>
-          <div>
-            <p class="font-medium text-sm text-burgundy-dark mb-2">Contras</p>
-            <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
-              {l.contras.map((c) => <li>{c}</li>)}
-            </ul>
-          </div>
-        </div>
-
-        <a
-          href={l.enlace}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          class="inline-block bg-mustard text-cream font-semibold px-6 py-2.5 rounded-sm text-sm"
-        >
-          Ver precio en Amazon
-        </a>
-      </div>
-    ))}
+    {lamparas.map((l) => <ProductCard producto={l} />)}
 
     <h2 class="font-serif text-2xl text-burgundy-dark font-medium mt-4 mb-4">
       Nuestra recomendación

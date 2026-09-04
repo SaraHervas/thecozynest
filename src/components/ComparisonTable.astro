@@ -1,0 +1,23 @@
+---
+const { productos, columnaDestacado = 'Ideal para' } = Astro.props;
+---
+<div class="overflow-x-auto mb-12">
+  <table class="w-full text-sm border border-borderc rounded overflow-hidden">
+    <thead>
+      <tr class="bg-cream-2 text-left">
+        <th class="p-3 font-medium text-burgundy-dark">Modelo</th>
+        <th class="p-3 font-medium text-burgundy-dark">{columnaDestacado}</th>
+        <th class="p-3 font-medium text-burgundy-dark">Precio orientativo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {productos.map((p) => (
+        <tr class="border-t border-borderc">
+          <td class="p-3">{p.nombre}</td>
+          <td class="p-3 text-ink-soft">{p.destacado}</td>
+          <td class="p-3 text-ink-soft">{p.precio}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
