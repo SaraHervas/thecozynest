@@ -4,16 +4,16 @@ import AmazonButton from './AmazonButton.astro';
 const { producto } = Astro.props;
 const { nombre, precio, destacado, pros = [], contras = [], enlace } = producto;
 ---
-<div class="border border-borderc rounded p-7 mb-8 bg-white">
+<div class="border border-borderc/60 rounded-3xl p-7 sm:p-8 mb-8 bg-paper shadow-cozy hover:shadow-cozy-lg transition-shadow duration-300">
   {destacado && (
-    <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-3">
+    <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-3 py-1.5 rounded-full mb-3">
       {destacado}
     </span>
   )}
   <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-1">{nombre}</h3>
   {precio && <p class="text-ink-soft text-sm mb-4">{precio}</p>}
 
-  <div class="grid sm:grid-cols-2 gap-6 mb-5">
+  <div class="grid sm:grid-cols-2 gap-6 mb-6">
     {pros.length > 0 && (
       <div>
         <p class="font-medium text-sm text-burgundy-dark mb-2">Pros</p>

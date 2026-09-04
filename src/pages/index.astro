@@ -3,39 +3,39 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 ---
 <Layout title="Inicio">
-  <section class="max-w-5xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-14 items-center">
+  <section class="max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-20 grid md:grid-cols-2 gap-14 items-center">
     <div>
       <p class="text-sage text-sm font-medium mb-3">Guías de estilo de vida cálido</p>
       <h1 class="font-serif text-4xl md:text-5xl font-medium text-burgundy-dark leading-tight mb-5 max-w-md">
         Rincones que dan ganas de quedarse en casa
       </h1>
-      <p class="text-ink-soft max-w-sm mb-7">
+      <p class="text-ink-soft max-w-sm mb-8">
         Ideas y recomendaciones para convertir tu escritorio y tu sillón de lectura
         en el lugar favorito de tu piso, aunque sea pequeño.
       </p>
       <Button href="/oficina-cozy">Ver guía de oficina cozy</Button>
     </div>
-    <div class="bg-cream-2 border border-borderc rounded aspect-[4/3.4] flex items-center justify-center">
+    <div class="bg-gradient-to-br from-cream-2 to-cream border border-borderc/50 rounded-3xl shadow-cozy aspect-[4/3.4] flex items-center justify-center">
       <span class="text-ink-soft text-sm">Espacio para imagen o ilustración</span>
     </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-8 py-14">
+  <section class="max-w-5xl mx-auto px-6 sm:px-8 py-16">
     <h2 class="font-serif text-3xl text-burgundy-dark font-medium mb-2">Dos rincones, un mismo espíritu</h2>
-    <p class="text-ink-soft max-w-md mb-9">
+    <p class="text-ink-soft max-w-md mb-10">
       Contenido pensado para pisos reales, presupuestos reales y teletrabajo real.
     </p>
     <div class="grid md:grid-cols-2 gap-7">
-      <a href="/oficina-cozy" class="block bg-white border border-borderc rounded p-8 hover:border-terracotta transition-colors">
-        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-4">Pilar 1</span>
+      <a href="/oficina-cozy" class="block bg-paper border border-borderc/60 rounded-3xl p-8 shadow-cozy hover:shadow-cozy-lg hover:-translate-y-1 transition-all duration-300">
+        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-3 py-1.5 rounded-full mb-4">Pilar 1</span>
         <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-2">Oficina cozy</h3>
         <p class="text-ink-soft text-sm mb-4">
           Lámparas cálidas, sillas con estilo, organizadores bonitos y mantas para tu silla de teletrabajo.
         </p>
         <span class="text-terracotta font-semibold text-sm">Explorar oficina cozy →</span>
       </a>
-      <a href="/rincon-lectura" class="block bg-white border border-borderc rounded p-8 hover:border-terracotta transition-colors">
-        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-sm mb-4">Pilar 2</span>
+      <a href="/rincon-lectura" class="block bg-paper border border-borderc/60 rounded-3xl p-8 shadow-cozy hover:shadow-cozy-lg hover:-translate-y-1 transition-all duration-300">
+        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-3 py-1.5 rounded-full mb-4">Pilar 2</span>
         <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-2">Rincón de lectura</h3>
         <p class="text-ink-soft text-sm mb-4">
           Sillones pequeños, lámparas de pie, mantas suaves y atriles para tu esquina de lectura favorita.

@@ -8,7 +8,7 @@ const articulos = Object.values(modules)
   .map((m) => m.meta);
 ---
 <Layout title="Rincón de lectura" description="Ideas para crear un rincón de lectura acogedor en casa.">
-  <section class="max-w-3xl mx-auto px-8 py-16">
+  <section class="max-w-3xl mx-auto px-6 sm:px-8 py-16 sm:py-20">
     <h1 class="font-serif text-4xl text-burgundy-dark font-medium mb-4">Rincón de lectura</h1>
     <p class="text-ink-soft mb-10">
       Sillones pequeños, lámparas de pie, mantas suaves y atriles para tu esquina
@@ -20,7 +20,9 @@ const articulos = Object.values(modules)
         {articulos.map((a) => <ArticleCard {...a} />)}
       </div>
     ) : (
-      <p class="text-sm text-ink-soft italic">Contenido pendiente de añadir.</p>
+      <div class="border border-dashed border-borderc rounded-3xl p-10 text-center">
+        <p class="text-sm text-ink-soft italic">Contenido pendiente de añadir. Vuelve pronto.</p>
+      </div>
     )}
   </section>
 </Layout>

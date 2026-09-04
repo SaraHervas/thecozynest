@@ -11,7 +11,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPath = Astro.url.pathname;
 
 const navLink = (path) =>
-  `hover:text-terracotta ${currentPath.startsWith(path) ? 'text-terracotta' : ''}`;
+  `px-4 py-2 rounded-full transition-colors hover:bg-cream-2 hover:text-terracotta ${
+    currentPath.startsWith(path) ? 'text-terracotta bg-cream-2' : ''
+  }`;
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -36,12 +38,12 @@ const navLink = (path) =>
   />
 </head>
 <body class="font-sans">
-  <header class="border-b border-borderc py-6">
-    <div class="max-w-5xl mx-auto px-6 sm:px-8 flex flex-wrap gap-4 justify-between items-center">
+  <header class="sticky top-0 z-20 border-b border-borderc/60 bg-cream/80 backdrop-blur-md">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 py-5 flex flex-wrap gap-4 justify-between items-center">
       <a href="/" class="font-serif text-2xl font-medium text-burgundy">
         The Cozy<span class="text-mustard-dark">Nest</span>
       </a>
-      <nav class="flex gap-5 sm:gap-7 text-sm font-medium text-ink-soft">
+      <nav class="flex gap-2 text-sm font-medium text-ink-soft">
         <a href="/oficina-cozy" class={navLink('/oficina-cozy')}>Oficina cozy</a>
         <a href="/rincon-lectura" class={navLink('/rincon-lectura')}>Rincón de lectura</a>
       </nav>
@@ -52,9 +54,9 @@ const navLink = (path) =>
     <slot />
   </main>
 
-  <footer class="border-t border-borderc py-9 mt-16">
+  <footer class="border-t border-borderc/60 py-10 mt-20">
     <div class="max-w-xl mx-auto px-8 text-center">
-      <p class="text-xs text-ink-soft">
+      <p class="text-xs text-ink-soft/80">
         Como afiliado de Amazon, realizo compras adscritas que cumplen los requisitos aplicables.
       </p>
     </div>

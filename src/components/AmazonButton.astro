@@ -7,7 +7,7 @@ const { href, class: className = '' } = Astro.props;
   href={withAffiliateTag(href)}
   target="_blank"
   rel="nofollow noopener noreferrer"
-  class={`inline-block bg-mustard hover:bg-mustard-dark transition-colors text-cream font-semibold px-6 py-2.5 rounded-sm text-sm text-center ${className}`}
+  class={`inline-block bg-mustard hover:bg-mustard-dark transition-all duration-300 text-cream font-semibold px-6 py-3 rounded-full shadow-cozy hover:shadow-cozy-lg hover:-translate-y-0.5 text-sm text-center ${className}`}
 >
   <slot />
 </a>
