@@ -1,0 +1,21 @@
+---
+const { title, description, badge, href, imagen } = Astro.props;
+---
+<a href={href} class="card-lift block bg-white border border-borderc rounded-3xl overflow-hidden">
+  {imagen ? (
+    <img src={imagen} alt={title} class="w-full h-40 object-cover" />
+  ) : (
+    <div class="w-full h-40 bg-cream-2 flex items-center justify-center text-ink-soft text-sm">
+      Espacio para imagen
+    </div>
+  )}
+  <div class="p-6">
+    {badge && (
+      <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
+        {badge}
+      </span>
+    )}
+    <h3 class="font-serif text-lg text-burgundy-dark font-medium mb-1">{title}</h3>
+    <p class="text-ink-soft text-sm">{description}</p>
+  </div>
+</a>

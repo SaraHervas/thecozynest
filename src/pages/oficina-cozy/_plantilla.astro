@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+// 1) RELLENA ESTO — es lo que aparece en la tarjeta del índice de "Oficina cozy"
+export const meta = {
+  badge: 'Categoría', // ej: 'Escritorios', 'Sillas', 'Gestión de cables', 'Alfombras', 'Decoración'
+  title: 'Título del artículo', // ej: 'Los mejores escritorios pequeños para pisos'
+  description: 'Descripción corta de una línea para la tarjeta del índice.',
+  href: '/oficina-cozy/NOMBRE-DEL-ARCHIVO', // debe coincidir con el nombre de este archivo, sin .astro
+  imagen: null // ej: '/images/oficina-cozy/escritorio-portada.jpg' — ver instrucciones de imágenes más abajo
+};
+
+// 2) RELLENA AQUÍ CADA PRODUCTO QUE QUIERAS RECOMENDAR
+// Copia y pega un bloque {...} entero para añadir un producto más.
+const productos = [
+  {
+    nombre: 'Nombre del producto',
+    precio: 'Precio orientativo, ej: 40-55 €',
+    destacado: 'Por qué destaca, ej: "La más compacta"',
+    pros: ['Punto a favor 1', 'Punto a favor 2', 'Punto a favor 3'],
+    contras: ['Punto en contra 1', 'Punto en contra 2'],
+    enlace: 'https://amazon.es/dp/ASIN_REAL_DEL_PRODUCTO', // pega aquí la URL real del producto, SIN el ?tag= (se añade solo)
+    imagen: null // ej: '/images/oficina-cozy/nombre-producto.jpg'
+  }
+];
+---
+<Layout title={meta.title} description={meta.description}>
+  <article class="max-w-3xl mx-auto px-8 py-16">
+    <p class="text-sage text-sm font-medium mb-3">Oficina cozy</p>
+    <h1 class="font-serif text-4xl text-burgundy-dark font-medium mb-6 leading-tight">
+      {meta.title}
+    </h1>
+
+    <!-- 3) ESCRIBE AQUÍ LA INTRODUCCIÓN DEL ARTÍCULO (2-4 frases) -->
+    <p class="text-ink-soft mb-10">
+      Introducción del artículo: qué problema resuelve, para quién es, y qué va a
+      encontrar la persona que lo lea.
+    </p>
+
+    <!-- 4) LAS TARJETAS DE PRODUCTO SE GENERAN SOLAS A PARTIR DEL ARRAY "productos" DE ARRIBA -->
+    {productos.map((p) => (
+      <ProductCard
+        nombre={p.nombre}
+        precio={p.precio}
+        destacado={p.destacado}
+        pros={p.pros}
+        contras={p.contras}
+        enlace={p.enlace}
+        imagen={p.imagen}
+      />
+    ))}
+
+    <!-- 5) OPCIONAL: UNA RECOMENDACIÓN FINAL -->
+    <h2 class="font-serif text-2xl text-burgundy-dark font-medium mt-4 mb-4">
+      Nuestra recomendación
+    </h2>
+    <p class="text-ink-soft mb-4">
+      Cierre del artículo: cuál elegirías tú y por qué.
+    </p>
+  </article>
+</Layout>

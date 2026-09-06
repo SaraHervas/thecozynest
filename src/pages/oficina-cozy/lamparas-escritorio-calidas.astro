@@ -1,6 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import AmazonButton from '../../components/AmazonButton.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+export const meta = {
+  badge: 'Iluminación',
+  title: 'Las mejores lámparas cálidas para tu escritorio',
+  description: 'Tres opciones de luz cálida regulable para un escritorio con estilo.',
+  href: '/oficina-cozy/lamparas-escritorio-calidas',
+  imagen: null // pon aquí la ruta cuando tengas una imagen, ej: '/images/oficina-cozy/lamparas-portada.jpg'
+};
 
 const lamparas = [
   {
@@ -9,7 +17,8 @@ const lamparas = [
     destacado: 'La más compacta',
     pros: ['Ocupa poco espacio en escritorios pequeños', '3 tonos de luz y 10 niveles de brillo', 'Puerto USB para cargar el móvil'],
     contras: ['El brazo es algo corto para mesas muy grandes', 'El brillo máximo se queda justo para tareas de mucho detalle'],
-    enlace: 'https://amazon.es/dp/EJEMPLO1'
+    enlace: 'https://amazon.es/dp/EJEMPLO1',
+    imagen: null // ej: '/images/oficina-cozy/lampara-lepro.jpg'
   },
   {
     nombre: 'TaoTronics de brazo articulado, temperatura ajustable',
@@ -17,7 +26,8 @@ const lamparas = [
     destacado: 'La más versátil',
     pros: ['Brazo articulado, cubre escritorios grandes sin moverla', 'Buen CRI, los colores se ven fieles bajo su luz', 'Memoria de la última configuración usada'],
     contras: ['Más grande, necesita algo de espacio en la mesa', 'El control táctil tarda un poco en acostumbrarse'],
-    enlace: 'https://amazon.es/dp/EJEMPLO2'
+    enlace: 'https://amazon.es/dp/EJEMPLO2',
+    imagen: null
   },
   {
     nombre: 'Lámpara de pie con pantalla de lino, luz cálida',
@@ -25,18 +35,16 @@ const lamparas = [
     destacado: 'La más "cozy"',
     pros: ['Aporta luz ambiental además de la de trabajo', 'Estética muy cálida, encaja perfecto en rincones de lectura', 'No ocupa espacio en la mesa'],
     contras: ['No sirve como única luz de trabajo de precisión', 'Necesita algo de espacio en el suelo junto al escritorio'],
-    enlace: 'https://amazon.es/dp/EJEMPLO3'
+    enlace: 'https://amazon.es/dp/EJEMPLO3',
+    imagen: null
   }
 ];
 ---
-<Layout
-  title="Las mejores lámparas cálidas para tu escritorio"
-  description="Guía de lámparas de escritorio con luz cálida para crear un home office cozy, incluso en espacios pequeños."
->
+<Layout title={meta.title} description={meta.description}>
   <article class="max-w-3xl mx-auto px-8 py-16">
     <p class="text-sage text-sm font-medium mb-3">Oficina cozy</p>
     <h1 class="font-serif text-4xl text-burgundy-dark font-medium mb-6 leading-tight">
-      Las mejores lámparas cálidas para tu escritorio
+      {meta.title}
     </h1>
 
     <p class="text-ink-soft mb-6">
@@ -82,30 +90,15 @@ const lamparas = [
     </div>
 
     {lamparas.map((l) => (
-      <div class="card-lift border border-borderc rounded-3xl p-7 mb-8 bg-white">
-        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
-          {l.destacado}
-        </span>
-        <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-1">{l.nombre}</h3>
-        <p class="text-ink-soft text-sm mb-4">{l.precio}</p>
-
-        <div class="grid sm:grid-cols-2 gap-6 mb-5">
-          <div>
-            <p class="font-medium text-sm text-burgundy-dark mb-2">Pros</p>
-            <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
-              {l.pros.map((p) => <li>{p}</li>)}
-            </ul>
-          </div>
-          <div>
-            <p class="font-medium text-sm text-burgundy-dark mb-2">Contras</p>
-            <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
-              {l.contras.map((c) => <li>{c}</li>)}
-            </ul>
-          </div>
-        </div>
-
-        <AmazonButton href={l.enlace} label="Ver precio en Amazon" />
-      </div>
+      <ProductCard
+        nombre={l.nombre}
+        precio={l.precio}
+        destacado={l.destacado}
+        pros={l.pros}
+        contras={l.contras}
+        enlace={l.enlace}
+        imagen={l.imagen}
+      />
     ))}
 
     <h2 class="font-serif text-2xl text-burgundy-dark font-medium mt-4 mb-4">

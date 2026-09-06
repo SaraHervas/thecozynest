@@ -1,0 +1,37 @@
+---
+import AmazonButton from './AmazonButton.astro';
+
+const { nombre, precio, destacado, pros, contras, enlace, imagen } = Astro.props;
+---
+<div class="card-lift border border-borderc rounded-3xl p-7 mb-8 bg-white">
+  {imagen ? (
+    <img src={imagen} alt={nombre} class="w-full h-48 object-cover rounded-2xl mb-5" />
+  ) : (
+    <div class="w-full h-48 bg-cream-2 rounded-2xl mb-5 flex items-center justify-center text-ink-soft text-sm">
+      Espacio para imagen de producto
+    </div>
+  )}
+
+  <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
+    {destacado}
+  </span>
+  <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-1">{nombre}</h3>
+  <p class="text-ink-soft text-sm mb-4">{precio}</p>
+
+  <div class="grid sm:grid-cols-2 gap-6 mb-5">
+    <div>
+      <p class="font-medium text-sm text-burgundy-dark mb-2">Pros</p>
+      <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
+        {pros.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="font-medium text-sm text-burgundy-dark mb-2">Contras</p>
+      <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
+        {contras.map((c) => <li>{c}</li>)}
+      </ul>
+    </div>
+  </div>
+
+  <AmazonButton href={enlace} label="Ver precio en Amazon" />
+</div>
