@@ -1,17 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   background-color: #F7F1E7;
   color: #2E211C;
 }
 
-::selection {
-  background-color: #C98A2C;
-  color: #F7F1E7;
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes lamp-glow {
+    0%, 100% { opacity: 0.55; filter: drop-shadow(0 0 6px rgba(201,138,44,0.35)); }
+    50% { opacity: 0.9; filter: drop-shadow(0 0 16px rgba(201,138,44,0.6)); }
+  }
+  @keyframes drift {
+    0% { transform: translate(0, 0); opacity: 0; }
+    15% { opacity: 0.6; }
+    85% { opacity: 0.4; }
+    100% { transform: translate(var(--drift-x, 10px), -60px); opacity: 0; }
+  }
+  .lamp-bulb { animation: lamp-glow 3.4s ease-in-out infinite; transform-origin: center; }
+  .mote { animation: drift 7s ease-in infinite; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamp-bulb { opacity: 0.8; }
+  .mote { display: none; }
+}
+
+.site-header {
+  transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+.site-header.is-scrolled {
+  box-shadow: 0 2px 14px rgba(46,33,28,0.08);
+  background-color: rgba(247,241,231,0.92);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+
+.card-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(107,39,55,0.12);
+  border-color: #A8452F;
+}
+.card-lift:hover .arrow-shift {
+  transform: translateX(4px);
+}
+.arrow-shift {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.btn-press {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn-press:active {
+  transform: scale(0.97);
 }

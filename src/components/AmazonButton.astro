@@ -1,13 +1,14 @@
 ---
-import { withAffiliateTag } from '../lib/affiliate';
+import { withAffiliateTag } from '../lib/affiliate.js';
 
-const { href, class: className = '' } = Astro.props;
+const { href, label = 'Ver precio en Amazon' } = Astro.props;
+const finalHref = withAffiliateTag(href);
 ---
 <a
-  href={withAffiliateTag(href)}
+  href={finalHref}
   target="_blank"
   rel="nofollow noopener noreferrer"
-  class={`inline-block bg-mustard hover:bg-mustard-dark transition-all duration-300 ease-out text-cream font-semibold px-6 py-3 rounded-full shadow-cozy hover:shadow-cozy-lg hover:-translate-y-0.5 hover:scale-[1.03] active:scale-[0.98] text-sm text-center ${className}`}
+  class="btn-press inline-block bg-mustard text-cream font-semibold px-6 py-2.5 rounded-full text-sm"
 >
-  <slot />
+  {label}
 </a>

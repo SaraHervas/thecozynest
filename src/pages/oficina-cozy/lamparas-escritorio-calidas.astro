@@ -1,15 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ProductCard from '../../components/ProductCard.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
-
-export const meta = {
-  badge: 'Guía de compra',
-  title: 'Las mejores lámparas cálidas para tu escritorio',
-  description:
-    'Guía de lámparas de escritorio con luz cálida para crear un home office cozy, incluso en espacios pequeños.',
-  href: '/oficina-cozy/lamparas-escritorio-calidas'
-};
+import AmazonButton from '../../components/AmazonButton.astro';
 
 const lamparas = [
   {
@@ -38,11 +29,14 @@ const lamparas = [
   }
 ];
 ---
-<Layout title={meta.title} description={meta.description}>
+<Layout
+  title="Las mejores lámparas cálidas para tu escritorio"
+  description="Guía de lámparas de escritorio con luz cálida para crear un home office cozy, incluso en espacios pequeños."
+>
   <article class="max-w-3xl mx-auto px-8 py-16">
     <p class="text-sage text-sm font-medium mb-3">Oficina cozy</p>
     <h1 class="font-serif text-4xl text-burgundy-dark font-medium mb-6 leading-tight">
-      {meta.title}
+      Las mejores lámparas cálidas para tu escritorio
     </h1>
 
     <p class="text-ink-soft mb-6">
@@ -66,9 +60,53 @@ const lamparas = [
     <h2 class="font-serif text-2xl text-burgundy-dark font-medium mt-10 mb-6">
       Comparativa rápida
     </h2>
-    <ComparisonTable productos={lamparas} />
+    <div class="overflow-x-auto mb-12">
+      <table class="w-full text-sm border border-borderc rounded-3xl overflow-hidden">
+        <thead>
+          <tr class="bg-cream-2 text-left">
+            <th class="p-3 font-medium text-burgundy-dark">Modelo</th>
+            <th class="p-3 font-medium text-burgundy-dark">Ideal para</th>
+            <th class="p-3 font-medium text-burgundy-dark">Precio orientativo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {lamparas.map((l) => (
+            <tr class="border-t border-borderc">
+              <td class="p-3">{l.nombre}</td>
+              <td class="p-3 text-ink-soft">{l.destacado}</td>
+              <td class="p-3 text-ink-soft">{l.precio}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
-    {lamparas.map((l) => <ProductCard producto={l} />)}
+    {lamparas.map((l) => (
+      <div class="card-lift border border-borderc rounded-3xl p-7 mb-8 bg-white">
+        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
+          {l.destacado}
+        </span>
+        <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-1">{l.nombre}</h3>
+        <p class="text-ink-soft text-sm mb-4">{l.precio}</p>
+
+        <div class="grid sm:grid-cols-2 gap-6 mb-5">
+          <div>
+            <p class="font-medium text-sm text-burgundy-dark mb-2">Pros</p>
+            <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
+              {l.pros.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+          <div>
+            <p class="font-medium text-sm text-burgundy-dark mb-2">Contras</p>
+            <ul class="text-sm text-ink-soft space-y-1 list-disc list-inside">
+              {l.contras.map((c) => <li>{c}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <AmazonButton href={l.enlace} label="Ver precio en Amazon" />
+      </div>
+    ))}
 
     <h2 class="font-serif text-2xl text-burgundy-dark font-medium mt-4 mb-4">
       Nuestra recomendación

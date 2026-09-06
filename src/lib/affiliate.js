@@ -1,19 +1,14 @@
-// Tag de afiliado de Amazon, centralizado en un único sitio.
-// Si alguna vez cambia, solo hay que actualizarlo aquí: se aplica
-// automáticamente a todos los enlaces de producto de la web.
-export const AMAZON_TAG = 'thecozynest0a-21';
+const AFFILIATE_TAG = 'thecozynest0a-21';
 
 /**
- * Devuelve la URL de Amazon con el Tag de afiliado correcto aplicado,
- * sobrescribiendo cualquier `tag` que trajera la URL original
- * (por ejemplo, un placeholder de un borrador de artículo).
+ * Añade el tag de afiliado de Amazon a una URL de producto.
+ * Es el único sitio del proyecto donde aparece el tag: si Amazon
+ * te asigna uno nuevo en el futuro, solo hay que cambiarlo aquí.
+ *
+ * @param {string} url - URL del producto en Amazon (sin tag, o con otros parámetros)
+ * @returns {string} URL con el tag de afiliado añadido
  */
 export function withAffiliateTag(url) {
-  try {
-    const parsed = new URL(url);
-    parsed.searchParams.set('tag', AMAZON_TAG);
-    return parsed.toString();
-  } catch {
-    return url;
-  }
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}tag=${AFFILIATE_TAG}`;
 }

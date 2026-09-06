@@ -1,62 +1,71 @@
 ---
 import '../styles/global.css';
 
-const {
-  title,
-  description = 'Ideas y recomendaciones para crear rincones cálidos en casa.'
-} = Astro.props;
-
-const pageTitle = `${title} · The Cozy Nest`;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const currentPath = Astro.url.pathname;
-
-const navLink = (path) =>
-  `px-4 py-2 rounded-full transition-colors hover:bg-cream-2 hover:text-terracotta ${
-    currentPath.startsWith(path) ? 'text-terracotta bg-cream-2' : ''
-  }`;
+const { title, description = 'Ideas y recomendaciones para crear rincones cálidos en casa.' } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="canonical" href={canonicalURL} />
-  <title>{pageTitle}</title>
+  <title>{title} · The Cozy Nest</title>
   <meta name="description" content={description} />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonicalURL} />
-  <meta name="twitter:card" content="summary" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
 </head>
 <body class="font-sans">
-  <header class="sticky top-0 z-20 border-b border-borderc/60 bg-cream/80 backdrop-blur-md">
-    <div class="max-w-5xl mx-auto px-6 sm:px-8 py-5 flex flex-wrap gap-4 justify-between items-center">
+  <header id="site-header" class="site-header sticky top-0 z-50 border-b border-borderc py-6">
+    <div class="max-w-5xl mx-auto px-8 flex justify-between items-center">
       <a href="/" class="font-serif text-2xl font-medium text-burgundy">
         The Cozy<span class="text-mustard-dark">Nest</span>
       </a>
-      <nav class="flex gap-2 text-sm font-medium text-ink-soft">
-        <a href="/oficina-cozy" class={navLink('/oficina-cozy')}>Oficina cozy</a>
-        <a href="/rincon-lectura" class={navLink('/rincon-lectura')}>Rincón de lectura</a>
+      <nav class="flex gap-7 text-sm font-medium text-ink-soft">
+        <a href="/oficina-cozy" class="hover:text-terracotta transition-colors">Oficina cozy</a>
+        <a href="/rincon-lectura" class="hover:text-terracotta transition-colors">Rincón de lectura</a>
       </nav>
     </div>
   </header>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const onScroll = () => {
+      if (!header) return;
+      header.classList.toggle('is-scrolled', window.scrollY > 12);
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    let audioCtx;
+    function playClick() {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      const bufferSize = Math.floor(audioCtx.sampleRate * 0.025);
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize);
+      }
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = buffer;
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 1400;
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.5, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+      noise.connect(filter).connect(gain).connect(audioCtx.destination);
+      noise.start(now);
+    }
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('a, button')) playClick();
+    });
+  </script>
 
   <main>
     <slot />
   </main>
 
-  <footer class="border-t border-borderc/60 py-10 mt-20">
+  <footer class="border-t border-borderc py-9 mt-16">
     <div class="max-w-xl mx-auto px-8 text-center">
-      <p class="text-xs text-ink-soft/80">
+      <p class="text-xs text-ink-soft">
         Como afiliado de Amazon, realizo compras adscritas que cumplen los requisitos aplicables.
       </p>
     </div>

@@ -1,31 +1,57 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
 ---
 <Layout title="Inicio">
-  <Hero />
+  <section class="max-w-5xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="text-sage text-sm font-medium mb-3">Guías de estilo de vida cálido</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-medium text-burgundy-dark leading-tight mb-5 max-w-md">
+        Rincones que dan ganas de quedarse en casa
+      </h1>
+      <p class="text-ink-soft max-w-sm mb-7">
+        Ideas y recomendaciones para convertir tu escritorio y tu sillón de lectura
+        en el lugar favorito de tu piso, aunque sea pequeño.
+      </p>
+      <a href="/oficina-cozy" class="btn-press inline-block bg-mustard text-cream font-semibold px-7 py-3 rounded-full">
+        Ver guía de oficina cozy
+      </a>
+    </div>
+    <div class="bg-cream-2 border border-borderc rounded-3xl aspect-[4/3.4] flex items-center justify-center relative overflow-hidden">
+      <svg width="200" height="180" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative z-10">
+        <ellipse cx="90" cy="145" rx="70" ry="8" fill="#DCCFB8"/>
+        <path d="M40 130 L40 60 Q40 40 60 40 L120 40 Q140 40 140 60 L140 130" stroke="#6B2737" stroke-width="3" fill="none"/>
+        <circle cx="90" cy="55" r="16" fill="#C98A2C" class="lamp-bulb"/>
+        <path d="M55 130 L55 100 Q55 90 65 90 L115 90 Q125 90 125 100 L125 130" stroke="#A8452F" stroke-width="3" fill="none"/>
+        <rect x="70" y="105" width="40" height="25" rx="2" stroke="#7C8363" stroke-width="2.5" fill="none"/>
+      </svg>
+      <span class="mote absolute w-1.5 h-1.5 rounded-full bg-mustard" style="left:38%; bottom:35%; --drift-x:14px; animation-delay:0s;"></span>
+      <span class="mote absolute w-1 h-1 rounded-full bg-mustard" style="left:52%; bottom:32%; --drift-x:-10px; animation-delay:1.8s;"></span>
+      <span class="mote absolute w-1 h-1 rounded-full bg-terracotta" style="left:60%; bottom:38%; --drift-x:8px; animation-delay:3.4s;"></span>
+      <span class="mote absolute w-1.5 h-1.5 rounded-full bg-mustard" style="left:45%; bottom:30%; --drift-x:-6px; animation-delay:5s;"></span>
+    </div>
+  </section>
 
-  <section class="max-w-6xl mx-auto px-6 sm:px-8 py-24 sm:py-32">
-    <h2 class="font-serif text-3xl sm:text-4xl text-burgundy-dark font-medium mb-3">Dos rincones, un mismo espíritu</h2>
-    <p class="text-ink-soft max-w-md mb-14">
+  <section class="max-w-5xl mx-auto px-8 py-14">
+    <h2 class="font-serif text-3xl text-burgundy-dark font-medium mb-2">Dos rincones, un mismo espíritu</h2>
+    <p class="text-ink-soft max-w-md mb-9">
       Contenido pensado para pisos reales, presupuestos reales y teletrabajo real.
     </p>
-    <div class="grid md:grid-cols-2 gap-8">
-      <a href="/oficina-cozy" class="block bg-paper border border-borderc/60 rounded-3xl p-9 shadow-cozy hover:shadow-cozy-lg hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 ease-out">
-        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-3 py-1.5 rounded-full mb-5">Pilar 1</span>
-        <h3 class="font-serif text-2xl text-burgundy-dark font-medium mb-3">Oficina cozy</h3>
-        <p class="text-ink-soft text-sm mb-5 leading-relaxed">
+    <div class="grid md:grid-cols-2 gap-7">
+      <a href="/oficina-cozy" class="card-lift block bg-white border border-borderc rounded-3xl p-8">
+        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-full mb-4">Pilar 1</span>
+        <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-2">Oficina cozy</h3>
+        <p class="text-ink-soft text-sm mb-4">
           Lámparas cálidas, sillas con estilo, organizadores bonitos y mantas para tu silla de teletrabajo.
         </p>
-        <span class="text-terracotta font-semibold text-sm">Explorar oficina cozy →</span>
+        <span class="text-terracotta font-semibold text-sm">Explorar oficina cozy <span class="arrow-shift">→</span></span>
       </a>
-      <a href="/rincon-lectura" class="block bg-paper border border-borderc/60 rounded-3xl p-9 shadow-cozy hover:shadow-cozy-lg hover:-translate-y-1.5 hover:scale-[1.01] transition-all duration-500 ease-out">
-        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-3 py-1.5 rounded-full mb-5">Pilar 2</span>
-        <h3 class="font-serif text-2xl text-burgundy-dark font-medium mb-3">Rincón de lectura</h3>
-        <p class="text-ink-soft text-sm mb-5 leading-relaxed">
+      <a href="/rincon-lectura" class="card-lift block bg-white border border-borderc rounded-3xl p-8">
+        <span class="inline-block bg-cream-2 text-terracotta text-xs font-semibold px-2.5 py-1 rounded-full mb-4">Pilar 2</span>
+        <h3 class="font-serif text-xl text-burgundy-dark font-medium mb-2">Rincón de lectura</h3>
+        <p class="text-ink-soft text-sm mb-4">
           Sillones pequeños, lámparas de pie, mantas suaves y atriles para tu esquina de lectura favorita.
         </p>
-        <span class="text-terracotta font-semibold text-sm">Explorar rincón de lectura →</span>
+        <span class="text-terracotta font-semibold text-sm">Explorar rincón de lectura <span class="arrow-shift">→</span></span>
       </a>
     </div>
   </section>
