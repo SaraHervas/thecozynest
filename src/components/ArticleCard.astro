@@ -3,9 +3,9 @@ const { title, description, badge, href, imagen } = Astro.props;
 ---
 <a href={href} class="card-lift block bg-white border border-borderc rounded-3xl overflow-hidden">
   {imagen ? (
-    <img src={imagen} alt={title} class="w-full h-40 object-cover" />
+    <img src={imagen} alt={title} class="w-full aspect-[4/3] object-cover" />
   ) : (
-    <div class="w-full h-40 bg-cream-2 flex items-center justify-center text-ink-soft text-sm">
+    <div class="w-full aspect-[4/3] bg-cream-2 flex items-center justify-center text-ink-soft text-sm">
       Espacio para imagen
     </div>
   )}

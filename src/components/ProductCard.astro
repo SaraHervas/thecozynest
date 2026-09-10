@@ -5,9 +5,9 @@ const { nombre, precio, destacado, pros, contras, enlace, imagen } = Astro.props
 ---
 <div class="card-lift border border-borderc rounded-3xl p-7 mb-8 bg-white">
   {imagen ? (
-    <img src={imagen} alt={nombre} class="w-full h-48 object-cover rounded-2xl mb-5" />
+    <img src={imagen} alt={nombre} class="w-full aspect-square object-cover rounded-2xl mb-5" />
   ) : (
-    <div class="w-full h-48 bg-cream-2 rounded-2xl mb-5 flex items-center justify-center text-ink-soft text-sm">
+    <div class="w-full aspect-square bg-cream-2 rounded-2xl mb-5 flex items-center justify-center text-ink-soft text-sm">
       Espacio para imagen de producto
     </div>
   )}
